@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'ct-cordova-3.2.0',
+  appName: 'ct-cordova-4.2.0',
   webDir: 'www'
   
 };
