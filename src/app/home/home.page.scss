@@ -1,0 +1,23 @@
+.page {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+ion-item {
+  --background: #f8f8f8;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+ion-input {
+  font-size: 14px;
+}
+
+ion-button {
+  border-radius: 10px;
+}
