@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding page">
+  <!-- User Identification -->
+  <ion-card class="card">
+    <ion-card-header>
+      <ion-card-title>User Identification</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-input
+            label="Identity"
+            label-placement="stacked"
+            placeholder="Enter identity"
+            [(ngModel)]="identity"
+            (ionBlur)="autoLoginOnBlur()">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Name"
+            label-placement="stacked"
+            placeholder="Enter name"
+            [(ngModel)]="name"
+            (ionBlur)="autoLoginOnBlur()">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            type="email"
+            label="Email"
+            label-placement="stacked"
+            placeholder="Enter email"
+            [(ngModel)]="email"
+            (ionBlur)="autoLoginOnBlur()">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="block" (click)="onUserLogin()">
+        OnUserLogin
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Update Profile -->
+  <ion-card class="card">
+    <ion-card-header>
+      <ion-card-title>Update Profile Property</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid class="kv">
+        <ion-row>
+          <ion-col size="5">
+            <ion-item lines="none">
+              <ion-input
+                label="Key"
+                label-placement="stacked"
+                placeholder="e.g. tier"
+                [(ngModel)]="kvKey">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="7">
+            <ion-item lines="none">
+              <ion-input
+                label="Value"
+                label-placement="stacked"
+                placeholder="e.g. gold"
+                [(ngModel)]="kvValue">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-button expand="block" (click)="profileSet()">
+        Update Profile
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Test -->
+  <ion-card class="card">
+    <ion-card-header>
+      <ion-card-title>Test</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" fill="outline" (click)="testCTA()">
+        Test Button
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

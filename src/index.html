@@ -26,7 +26,7 @@
     document.addEventListener('deviceready', onDeviceReady, false);
     document.addEventListener('onDeepLink', onDeepLink, false);
     document.addEventListener('onPushNotification', onPushNotification, false);
-    document.addEventListener('onCleverTapInboxDidInitialize', onCleverTapInboxDidInitialize, false);
+    // document.addEventListener('onCleverTapInboxDidInitialize', onCleverTapInboxDidInitialize, false);
     document.addEventListener('onCleverTapInboxMessagesDidUpdate', onCleverTapInboxMessagesDidUpdate, false);
     document.addEventListener('onCleverTapInAppButtonClick', onCleverTapInAppButtonClick, false);
 
@@ -48,14 +48,14 @@
     }
 
     // Inbox Initialization
-    function onCleverTapInboxDidInitialize() {
-        console.log("CleverTap Inbox Initialized.");
-        CleverTap.showInbox({
-            navBarTitle: "My App Inbox",
-            tabs: ["Promotions", "Offers"],
-            navBarColor: "#FF0000",
-        });
-    }
+    // function onCleverTapInboxDidInitialize() {
+    //     console.log("CleverTap Inbox Initialized.");
+    //     CleverTap.showInbox({
+    //         navBarTitle: "My App Inbox",
+    //         tabs: ["Promotions", "Offers"],
+    //         navBarColor: "#FF0000",
+    //     });
+    // }
 
     // Inbox Message Updates
     function onCleverTapInboxMessagesDidUpdate() {
