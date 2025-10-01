@@ -15,12 +15,64 @@
   <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
 
   <!-- add to homescreen for ios -->
-  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 </head>
 
 <body>
   <app-root></app-root>
+
+  <script>
+    document.addEventListener('deviceready', onDeviceReady, false);
+    document.addEventListener('onDeepLink', onDeepLink, false);
+    document.addEventListener('onPushNotification', onPushNotification, false);
+    document.addEventListener('onCleverTapInboxDidInitialize', onCleverTapInboxDidInitialize, false);
+    document.addEventListener('onCleverTapInboxMessagesDidUpdate', onCleverTapInboxMessagesDidUpdate, false);
+    document.addEventListener('onCleverTapInAppButtonClick', onCleverTapInAppButtonClick, false);
+
+    // Initialize CleverTap
+    function onDeviceReady() {
+        CleverTap.notifyDeviceReady(); // Required for CleverTap initialization
+        console.log("Device is ready, CleverTap initialized.");
+        CleverTap.setDebugLevel(3);
+    }
+
+    // Deep Link Handling
+    function onDeepLink(e) {
+        console.log("Received Deep Link:", e.deeplink);
+    }
+
+    // Push Notification Data Handling
+    function onPushNotification(e) {
+        console.log("Push Notification Received:", JSON.stringify(e.notification));
+    }
+
+    // Inbox Initialization
+    function onCleverTapInboxDidInitialize() {
+        console.log("CleverTap Inbox Initialized.");
+        CleverTap.showInbox({
+            navBarTitle: "My App Inbox",
+            tabs: ["Promotions", "Offers"],
+            navBarColor: "#FF0000",
+        });
+    }
+
+    // Inbox Message Updates
+    function onCleverTapInboxMessagesDidUpdate() {
+        CleverTap.getInboxMessageUnreadCount((val) =>
+            console.log("Unread Message Count:", val)
+        );
+        CleverTap.getInboxMessageCount((val) =>
+            console.log("Total Message Count:", val)
+        );
+    }
+
+    // In-App Button Clicks
+    function onCleverTapInAppButtonClick(e) {
+        console.log("In-App Button Click:", e.customExtras);
+    }
+</script>
+
 </body>
 
 </html>

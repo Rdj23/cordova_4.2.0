@@ -1,11 +1,26 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { Platform } from '@ionic/angular';
+import { CleverTap } from '@awesome-cordova-plugins/clevertap/ngx';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet],
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    private platform: Platform,
+    private clevertap: CleverTap
+  ) {
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // Notify CleverTap that the device is ready
+      this.clevertap.notifyDeviceReady();
+      this.clevertap.setDebugLevel(3);
+      console.log('CleverTap Initialized');
+    });
+  }
 }
