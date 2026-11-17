@@ -1,0 +1,44 @@
+diff --git a/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.h b/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.h
+index 50a83ce..01b13aa 100644
+--- a/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.h
++++ b/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.h
+@@ -112,7 +112,7 @@ Push Token Changes other than FCM
+  Suspends and saves inApp notifications until 'resumeInAppNotifications' is called for current session.
+  Automatically resumes InApp notifications display on CleverTap shared instance creation. Pending inApp notifications are displayed only for current session.
+  */
+-- (void)suspendInAppNotifications;
++- (void)suspendInAppNotifications:(CDVInvokedUrlCommand *)command;
+ 
+ /**
+  Discards inApp notifications until 'resumeInAppNotifications' is called for current session.
+@@ -122,7 +122,7 @@ Push Token Changes other than FCM
+ /**
+  Resumes displaying inApps notifications and shows pending inApp notifications if any.
+  */
+-- (void)resumeInAppNotifications;
++- (void)resumeInAppNotifications:(CDVInvokedUrlCommand *)command;
+ 
+ /**
+  Dismisses the currently visible Picture-in-Picture (PIP) In-App notification, if any. Safe to call from any thread; a no-op when no PIP is visible.
+diff --git a/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.m b/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.m
+index 89b3b7f..c62e4eb 100644
+--- a/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.m
++++ b/node_modules/clevertap-cordova/src/ios/CleverTapPlugin.m
+@@ -634,7 +634,7 @@ static NSMutableDictionary *allVariables;
+ 
+ #pragma mark - InApp Notification Controls
+ 
+-- (void)suspendInAppNotifications {
++- (void)suspendInAppNotifications:(CDVInvokedUrlCommand *)command {
+     [clevertap suspendInAppNotifications];
+ }
+ 
+@@ -655,7 +655,7 @@ static NSMutableDictionary *allVariables;
+     }];
+ }
+ 
+-- (void)resumeInAppNotifications {
++- (void)resumeInAppNotifications:(CDVInvokedUrlCommand *)command {
+     [clevertap resumeInAppNotifications];
+ }
+ 

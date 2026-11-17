@@ -35,6 +35,14 @@
         CleverTap.notifyDeviceReady(); // Required for CleverTap initialization
         console.log("Device is ready, CleverTap initialized.");
         CleverTap.setDebugLevel(3);
+        setTimeout(function () {
+            console.log("[SUC-138205] calling suspendInAppNotifications");
+            CleverTap.suspendInAppNotifications();
+            console.log("[SUC-138205] calling discardInAppNotifications(false)");
+            CleverTap.discardInAppNotifications(false);
+            console.log("[SUC-138205] calling resumeInAppNotifications");
+            CleverTap.resumeInAppNotifications();
+        }, 4000);
     }
 
     // Deep Link Handling
